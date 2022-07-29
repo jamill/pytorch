@@ -25,3 +25,8 @@ RUN apt-get update \
     gcc \
     ninja-build \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
+
+# Dependencies required to build PyTorch
+# Review - do we need ninja | numpy as they were installed via apt above?
+RUN pip3 install astunparse numpy ninja pyyaml setuptools cmake cffi typing_extensions future six requests dataclasses
+RUN pip3 install mkl mkl-devel
