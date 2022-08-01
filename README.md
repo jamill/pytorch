@@ -353,6 +353,12 @@ Please note that PyTorch uses shared memory to share data between processes, so 
 for multithreaded data loaders) the default shared memory segment size that container runs with is not enough, and you
 should increase shared memory size either with `--ipc=host` or `--shm-size` command line options to `nvidia-docker run`.
 
+### Dev Container (PIP)
+
+python3 -c "import site; print(site.getsitepackages()[0])"
+export CMAKE_PREFIX_PATH=/usr/lib/python3/dist-packages
+DEBUG=1 USE_CUDA=0 USE_KINETO=0 BUILD_CAFFE2=0 USE_DISTRIBUTED=0 USE_NCCL=0 BUILD_TEST=0 USE_XNNPACK=0 USE_FBGEMM=0 USE_QNNPACK=0 USE_MKLDNN=0 USE_MIOPEN=0 USE_NNPACK=0 BUILD_CAFFE2_OPS=0 USE_TENSORPIPE=0 python3 setup.py develop --user
+
 #### Building the image yourself
 
 **NOTE:** Must be built with a docker version > 18.06
